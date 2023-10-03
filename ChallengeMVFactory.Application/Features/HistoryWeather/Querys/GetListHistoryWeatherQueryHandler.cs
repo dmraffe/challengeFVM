@@ -1,8 +1,11 @@
-﻿using ChallengeMVFactory.Domain;
+﻿using ChallengeMVFactory.Application.Contracts.ExternalApi;
+using ChallengeMVFactory.Application.Contracts.Persistence;
+using ChallengeMVFactory.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,9 +13,25 @@ namespace ChallengeMVFactory.Application.Features.HistoryWeather.Querys
 {
     public class GetListHistoryWeatherQueryHandler : IRequestHandler<GetListHistoryWeatherQuery, List<ChallengeMVFactory.Domain.HistoryWeatherCity>>
     {
-        public Task<List<HistoryWeatherCity>> Handle(GetListHistoryWeatherQuery request, CancellationToken cancellationToken)
+
+     
+
+        IHistoryWatherRepository _historyWatherRepository;
+
+        
+
+        public GetListHistoryWeatherQueryHandler( IHistoryWatherRepository historyWatherRepositor)
         {
-            throw new NotImplementedException();
+            
+            _historyWatherRepository = historyWatherRepositor;
+            
+        }
+        public async Task<List<HistoryWeatherCity>> Handle(GetListHistoryWeatherQuery request, CancellationToken cancellationToken)
+        {
+             
+
+           var list =   await _historyWatherRepository.GetWatherAsync(request.CityID);
+            return list.ToList();
         }
     }
 }

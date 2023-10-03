@@ -13,7 +13,7 @@ namespace ChallengeMVFactory.Domain
 
         public double Humidity { get; set; }
 
-        public int CiyId { get; set; }
+        public int CityId { get; set; }
 
         public virtual City? City { get; set; }
     }

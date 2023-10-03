@@ -42,7 +42,7 @@ namespace ChallengeMVFactory.Application.Features.HistoryWeather.Commands.AddHis
                await _historyWatherRepository.AddAsync(new Domain.HistoryWeatherCity
                 {
 
-                    CiyId = request.cityId,
+                    CityId = request.cityId,
                     Humidity = ret.main.humidity,
                     Pressure = ret.main.pressure,
                     Temperature = ret.main.temp,

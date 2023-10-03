@@ -40,7 +40,7 @@ namespace ChallengeMVFactory.Infrastructure.Persistence
             modelBuilder.Entity<City>()
                 .HasMany(a => a.History)
                 .WithOne(a => a.City)
-                .HasForeignKey(a => a.CiyId)
+                .HasForeignKey(a => a.CityId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
